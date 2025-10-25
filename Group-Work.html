@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Finance - Climb Your Financial Peak</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-mountain"></i>
+                <span>Mountain Finance</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+            <div class="user-avatar">
+                <img src="https://via.placeholder.com/40x40/4A90E2/FFFFFF?text=U" alt="User Avatar" class="avatar-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - The Mountain -->
+    <section class="hero">
+        <div class="container">
+            <div class="mountain-container">
+                <div class="mountain-graphic">
+                    <svg viewBox="0 0 300 200" class="mountain-svg">
+                        <!-- Mountain silhouette -->
+                        <path d="M0,200 L50,120 L100,80 L150,60 L200,40 L250,60 L300,100 L300,200 Z" fill="#8B4513" class="mountain-base"/>
+                        <path d="M0,200 L30,140 L60,100 L90,80 L120,60 L150,50 L180,60 L210,80 L240,100 L270,140 L300,200 Z" fill="#A0522D" class="mountain-mid"/>
+                        <path d="M0,200 L20,160 L40,120 L60,100 L80,80 L100,70 L120,80 L140,100 L160,120 L180,160 L200,200 Z" fill="#D2691E" class="mountain-top"/>
+                        
+                        <!-- Snow caps -->
+                        <path d="M80,80 L100,60 L120,80 L100,100 Z" fill="#FFFFFF" class="snow-cap"/>
+                        <path d="M140,100 L160,80 L180,100 L160,120 Z" fill="#FFFFFF" class="snow-cap"/>
+                        
+                        <!-- User avatar position -->
+                        <circle cx="100" cy="90" r="8" fill="#4A90E2" class="user-position"/>
+                        <text x="100" y="95" text-anchor="middle" fill="white" font-size="8" font-weight="bold">U</text>
+                    </svg>
+                </div>
+                
+                <div class="progress-info">
+                    <div class="level-display">
+                        <span class="level-text">Level 5</span>
+                        <span class="location-text">Base Camp</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="progress-text">65% to Peak 6</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Primary CTA -->
+            <button class="cta-button">
+                <i class="fas fa-plus"></i>
+                Log Expense
+            </button>
+        </div>
+    </section>
+
+    <!-- Core Gamification & Data Display -->
+    <section class="gamification">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card streak-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Day Streak!</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card savings-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">$2,450</div>
+                        <div class="stat-label">Total Savings</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-tabs">
+                <a href="#" class="tab-link active">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="tab-link">
+                    <i class="fas fa-table"></i>
+                    Transaction Log
+                </a>
+                <a href="#" class="tab-link">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Pay Section -->
+    <section class="why-pay">
+        <div class="container">
+            <h2>Unlock Expert Climber Tools</h2>
+            <div class="premium-features">
+                <div class="feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <span>Advanced Analytics</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <span>Team Challenges</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Exclusive Badges</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Detailed Reports</span>
+                </div>
+            </div>
+            <button class="upgrade-button">Upgrade to Premium</button>
+        </div>
+    </section>
+
+    <!-- Cash Flow Diagram -->
+    <section class="cash-flow">
+        <div class="container">
+            <h3>Your Financial Flow</h3>
+            <div class="flow-chart">
+                <div class="flow-item income">
+                    <div class="flow-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="flow-content">
+                        <div class="flow-amount">$4,200</div>
+                        <div class="flow-label">Monthly Income</div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="flow-item expenses">
+                    <div class="flow-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="flow-content">
+                        <div class="flow-amount">$3,100</div>
+                        <div class="flow-label">Monthly Expenses</div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="flow-item savings">
+                    <div class="flow-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="flow-content">
+                        <div class="flow-amount">$1,100</div>
+                        <div class="flow-label">Monthly Savings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & Motivation -->
+    <section class="social-motivation">
+        <div class="container">
+            <div class="leaderboard">
+                <h3>Climber Rankings</h3>
+                <div class="rank-display">
+                    <div class="rank-number">#14</div>
+                    <div class="rank-text">of 200 Climbers</div>
+                </div>
+                <div class="rank-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-text">70% to Top 10</span>
+                </div>
+            </div>
+            
+            <div class="goal-status">
+                <h3>Current Goal</h3>
+                <div class="goal-content">
+                    <div class="goal-title">Everest Base Camp Trip</div>
+                    <div class="goal-amount">$5,000</div>
+                    <div class="goal-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 49%"></div>
+                        </div>
+                        <span class="progress-text">49% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Mountain Finance. Keep climbing! 🏔️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+EOF
