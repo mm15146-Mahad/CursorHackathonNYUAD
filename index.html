@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Finance - Climb Your Way to Financial Freedom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Menu Bar */
+        .menu-bar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .menu-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+
+        .menu-btn:active {
+            transform: translateY(0);
+        }
+
+        .settings-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        .settings-btn:hover {
+            background: linear-gradient(135deg, #ff5252 0%, #ff9800 100%);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .gear-icon {
+            font-size: 16px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .gear-icon:hover {
+            animation-duration: 0.5s;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 60px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 30px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mountain-container {
+            position: relative;
+            margin: 20px auto;
+            width: 300px;
+            height: 200px;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 200px solid #4a5568;
+        }
+
+        .mountain-peak {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 150px solid #2d3748;
+        }
+
+        .mountain-snow {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 50px solid white;
+        }
+
+        .avatar-position {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border-radius: 50%;
+            border: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .level-info {
+            margin: 20px 0;
+        }
+
+        .level-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            height: 20px;
+            margin: 15px auto;
+            width: 80%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+            height: 100%;
+            width: 65%;
+            border-radius: 25px;
+            position: relative;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+            margin: 20px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Core Gamification */
+        .gamification-section {
+            background: white;
+            padding: 30px 0;
+        }
+
+        .streak-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .transaction-log-link {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            display: block;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .transaction-log-link:hover {
+            background: #edf2f7;
+            border-color: #667eea;
+        }
+
+        /* Supporting Sections */
+        .why-pay {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .why-pay h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .premium-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cash-flow-section {
+            background: white;
+            padding: 30px 0;
+        }
+
+        .cash-flow-chart {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .income-bar, .expense-bar {
+            height: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .income-bar {
+            background: linear-gradient(90deg, #48bb78, #38a169);
+        }
+
+        .expense-bar {
+            background: linear-gradient(90deg, #f56565, #e53e3e);
+        }
+
+        .social-section {
+            background: #f7fafc;
+            padding: 30px 0;
+        }
+
+        .leaderboard {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .rank-display {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .goal-status {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .goal-progress {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 15px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .goal-progress-bar {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        /* Mobile-first responsive design */
+        @media (max-width: 768px) {
+            .menu-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .menu-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .menu-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .header {
+                top: 120px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 750px;
+            }
+            
+            .premium-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 970px;
+            }
+            
+            .premium-features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <div class="container">
+            <div class="menu-container">
+                <div class="logo">🏔️ Mountain Finance</div>
+                <div class="menu-buttons">
+                    <button class="menu-btn" onclick="handleMenuClick('Home')">🏠 Home</button>
+                    <button class="menu-btn" onclick="handleMenuClick('Spending')">💸 Spending</button>
+                    <button class="menu-btn" onclick="handleMenuClick('Leaderboard')">🏆 Leaderboard</button>
+                    <button class="menu-btn" onclick="handleMenuClick('Statistics')">📊 Statistics</button>
+                    <button class="menu-btn" onclick="handleMenuClick('Customize')">🎨 Customize</button>
+                    <button class="menu-btn settings-btn" onclick="handleMenuClick('Settings')">
+                        <span class="gear-icon">⚙️</span> Settings
+                    </button>
+                    <button class="menu-btn login-btn" onclick="handleMenuClick('Login')">🔐 Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+                <div class="profile-icon">👤</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="mountain-container">
+                <div class="mountain"></div>
+                <div class="mountain-peak"></div>
+                <div class="mountain-snow"></div>
+                <div class="avatar-position">🏔️</div>
+            </div>
+            
+            <div class="level-info">
+                <h1 class="level-title">Level 5 - Base Camp</h1>
+                <p>You're climbing strong! Keep logging expenses to reach the next peak.</p>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+                <div class="progress-text">65% to Peak 6</div>
+            </div>
+            
+            <button class="cta-button">📝 Log Expense</button>
+        </div>
+    </section>
+
+    <!-- Core Gamification -->
+    <section class="gamification-section">
+        <div class="container">
+            <div class="streak-badge">🔥 7 Days Logging Streak!</div>
+            
+            <a href="#transaction-log" class="transaction-log-link">
+                📊 The Spreadsheet - View Transaction Log
+            </a>
+        </div>
+    </section>
+
+    <!-- Why Pay Section -->
+    <section class="why-pay">
+        <div class="container">
+            <h2>🚀 Unlock Expert Climber Tools</h2>
+            <p>Premium gear for faster ascent to financial freedom!</p>
+            
+            <div class="premium-features">
+                <div class="feature-card">
+                    <h3>🎯 Advanced Analytics</h3>
+                    <p>Detailed insights into your spending patterns</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏆 Exclusive Challenges</h3>
+                    <p>Special mountain peaks and achievement badges</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👥 Team Climbing</h3>
+                    <p>Compete with friends and family members</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cash Flow Section -->
+    <section class="cash-flow-section">
+        <div class="container">
+            <h2>💰 Cash Flow Overview</h2>
+            <div class="cash-flow-chart">
+                <div class="income-bar" style="width: 80%;">Income: $4,200</div>
+                <div class="expense-bar" style="width: 60%;">Expenses: $2,800</div>
+                <p style="margin-top: 15px; font-weight: bold; color: #48bb78;">Monthly Surplus: $1,400</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & Motivation -->
+    <section class="social-section">
+        <div class="container">
+            <div class="leaderboard">
+                <h3>🏔️ Mountain Climber Rankings</h3>
+                <div class="rank-display">Your Rank: #14 of 200 Climbers</div>
+                <p>You're in the top 7% of climbers! Keep pushing to reach the summit!</p>
+            </div>
+            
+            <div class="goal-status">
+                <h3>🎯 Current Goal</h3>
+                <p><strong>Saving for Everest Base Camp Trip</strong></p>
+                <div class="goal-progress">
+                    <div class="goal-progress-bar"></div>
+                </div>
+                <p>40% Complete - $2,400 of $6,000 saved</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Menu button click handler
+        function handleMenuClick(section) {
+            // Add visual feedback
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+            }, 150);
+            
+            // Show alert for demo purposes
+            alert(`${section} section would open here!`);
+            
+            // In a real application, you would navigate to the appropriate section
+            // or load the corresponding content dynamically
+        }
+
+        // Add some interactivity
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('Expense logging feature would open here!');
+        });
+
+        document.querySelector('.transaction-log-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Transaction log/spreadsheet view would open here!');
+        });
+
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'shimmer 2s infinite';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.progress-bar, .goal-progress-bar').forEach(bar => {
+            observer.observe(bar);
+        });
+
+        // Add hover effects for menu buttons
+        document.querySelectorAll('.menu-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
