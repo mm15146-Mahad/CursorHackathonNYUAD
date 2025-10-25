@@ -3,676 +3,766 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mountain Finance - Climb Your Way to Financial Freedom</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Menu Bar */
-        .menu-bar {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 12px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-
-        .menu-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .menu-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .menu-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .menu-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-        }
-
-        .menu-btn:active {
-            transform: translateY(0);
-        }
-
-        .settings-btn {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
-            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-        }
-
-        .settings-btn:hover {
-            background: linear-gradient(135deg, #ff5252 0%, #ff9800 100%);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .gear-icon {
-            font-size: 16px;
-            animation: rotate 3s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .gear-icon:hover {
-            animation-duration: 0.5s;
-        }
-
-        .login-btn {
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
-        }
-
-        .login-btn:hover {
-            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: sticky;
-            top: 60px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .profile-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 30px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mountain-container {
-            position: relative;
-            margin: 20px auto;
-            width: 300px;
-            height: 200px;
-        }
-
-        .mountain {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-bottom: 200px solid #4a5568;
-        }
-
-        .mountain-peak {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 150px solid #2d3748;
-        }
-
-        .mountain-snow {
-            position: absolute;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 80px solid transparent;
-            border-right: 80px solid transparent;
-            border-bottom: 50px solid white;
-        }
-
-        .avatar-position {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            border-radius: 50%;
-            border: 3px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        .level-info {
-            margin: 20px 0;
-        }
-
-        .level-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar-container {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            height: 20px;
-            margin: 15px auto;
-            width: 80%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            background: linear-gradient(90deg, #ff6b6b, #ffa500);
-            height: 100%;
-            width: 65%;
-            border-radius: 25px;
-            position: relative;
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: calc(200px + 100%) 0; }
-        }
-
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            transition: all 0.3s;
-            margin: 20px 0;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Core Gamification */
-        .gamification-section {
-            background: white;
-            padding: 30px 0;
-        }
-
-        .streak-badge {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            display: inline-block;
-            font-weight: bold;
-            margin: 10px 0;
-            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-        }
-
-        .transaction-log-link {
-            background: #f7fafc;
-            border: 2px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            display: block;
-            margin: 15px 0;
-            transition: all 0.3s;
-        }
-
-        .transaction-log-link:hover {
-            background: #edf2f7;
-            border-color: #667eea;
-        }
-
-        /* Supporting Sections */
-        .why-pay {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .why-pay h2 {
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-
-        .premium-features {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .cash-flow-section {
-            background: white;
-            padding: 30px 0;
-        }
-
-        .cash-flow-chart {
-            background: #f7fafc;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .income-bar, .expense-bar {
-            height: 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .income-bar {
-            background: linear-gradient(90deg, #48bb78, #38a169);
-        }
-
-        .expense-bar {
-            background: linear-gradient(90deg, #f56565, #e53e3e);
-        }
-
-        .social-section {
-            background: #f7fafc;
-            padding: 30px 0;
-        }
-
-        .leaderboard {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .rank-display {
-            font-size: 18px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .goal-status {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .goal-progress {
-            background: #e2e8f0;
-            border-radius: 10px;
-            height: 15px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-
-        .goal-progress-bar {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            height: 100%;
-            width: 40%;
-            border-radius: 10px;
-        }
-
-        /* Mobile-first responsive design */
-        @media (max-width: 768px) {
-            .menu-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .menu-buttons {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .menu-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            
-            .header {
-                top: 120px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                max-width: 750px;
-            }
-            
-            .premium-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .container {
-                max-width: 970px;
-            }
-            
-            .premium-features {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-    </style>
+    <title>EverSave - Gamified Budget Tracker</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Menu Bar -->
-    <div class="menu-bar">
-        <div class="container">
-            <div class="menu-container">
-                <div class="logo">🏔️ Mountain Finance</div>
-                <div class="menu-buttons">
-                    <button class="menu-btn" onclick="handleMenuClick('Home')">🏠 Home</button>
-                    <button class="menu-btn" onclick="handleMenuClick('Spending')">💸 Spending</button>
-                    <button class="menu-btn" onclick="handleMenuClick('Leaderboard')">🏆 Leaderboard</button>
-                    <button class="menu-btn" onclick="handleMenuClick('Statistics')">📊 Statistics</button>
-                    <button class="menu-btn" onclick="handleMenuClick('Customize')">🎨 Customize</button>
-                    <button class="menu-btn settings-btn" onclick="handleMenuClick('Settings')">
-                        <span class="gear-icon">⚙️</span> Settings
-                    </button>
-                    <button class="menu-btn login-btn" onclick="handleMenuClick('Login')">🔐 Login</button>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-piggy-bank"></i>
+                <span>EverSave</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-link" data-page="spendings">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Spendings</span>
+                </a>
+                <a href="#" class="nav-link" data-page="leaderboard">
+                    <i class="fas fa-trophy"></i>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="#" class="nav-link" data-page="customize">
+                    <i class="fas fa-palette"></i>
+                    <span>Customize</span>
+                </a>
+                <a href="#" class="nav-link" data-page="statistics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </a>
+                <a href="#" class="nav-link" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-link" data-page="login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="home-container">
+                    <!-- User Stats Header -->
+                    <div class="stats-header">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="points-display">2,450</div>
+                                <div class="stat-label">Points</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="streak-display">12</div>
+                                <div class="stat-label">Day Streak</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="rank-display">#3</div>
+                                <div class="stat-label">Leaderboard</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hiking Visualization -->
+                    <div class="hiking-container">
+                        <div class="mountain-climb">
+                            <div class="mountain-background">
+                                <div class="mountain-base"></div>
+                                <div class="mountain-middle"></div>
+                                <div class="mountain-peak"></div>
+                                <div class="mountain-summit">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                            </div>
+                            <div class="climbing-path">
+                                <div class="path-segment" data-level="1"></div>
+                                <div class="path-segment" data-level="2"></div>
+                                <div class="path-segment" data-level="3"></div>
+                                <div class="path-segment" data-level="4"></div>
+                                <div class="path-segment" data-level="5"></div>
+                                <div class="path-segment" data-level="6"></div>
+                                <div class="path-segment" data-level="7"></div>
+                                <div class="path-segment" data-level="8"></div>
+                                <div class="path-segment" data-level="9"></div>
+                                <div class="path-segment" data-level="10"></div>
+                            </div>
+                            <div class="hiker" id="hiker-position">
+                                <i class="fas fa-hiking"></i>
+                            </div>
+                        </div>
+                        <div class="level-info">
+                            <h3>Level 7 - Mountain Peak</h3>
+                            <p>Keep spending wisely to reach the summit!</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <button class="action-btn primary">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Transaction</span>
+                        </button>
+                        <button class="action-btn secondary">
+                            <i class="fas fa-camera"></i>
+                            <span>Scan Receipt</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Spendings Page -->
+            <div id="spendings-page" class="page">
+                <div class="spendings-container">
+                    <h2>Your Spending Landscape</h2>
+                    <div class="income-horizon">
+                        <div class="horizon-line">
+                            <span class="horizon-label">Monthly Income: $4,500</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mountain-range">
+                        <div class="mountain" data-category="housing" data-amount="1200" data-percentage="27">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Housing</div>
+                            <div class="mountain-value">$1,200</div>
+                        </div>
+                        <div class="mountain" data-category="food" data-amount="800" data-percentage="18">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Food</div>
+                            <div class="mountain-value">$800</div>
+                        </div>
+                        <div class="mountain" data-category="transportation" data-amount="600" data-percentage="13">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Transport</div>
+                            <div class="mountain-value">$600</div>
+                        </div>
+                        <div class="mountain" data-category="entertainment" data-amount="400" data-percentage="9">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Entertainment</div>
+                            <div class="mountain-value">$400</div>
+                        </div>
+                        <div class="mountain" data-category="utilities" data-amount="300" data-percentage="7">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Utilities</div>
+                            <div class="mountain-value">$300</div>
+                        </div>
+                        <div class="mountain" data-category="shopping" data-amount="200" data-percentage="4">
+                            <div class="mountain-peak"></div>
+                            <div class="mountain-label">Shopping</div>
+                            <div class="mountain-value">$200</div>
+                        </div>
+                    </div>
+
+                    <div class="spending-summary">
+                        <div class="summary-card">
+                            <h4>Total Spent</h4>
+                            <div class="summary-value">$3,500</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Remaining</h4>
+                            <div class="summary-value positive">$1,000</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Savings Rate</h4>
+                            <div class="summary-value">22%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard Page -->
+            <div id="leaderboard-page" class="page">
+                <div class="leaderboard-container">
+                    <h2>Leaderboard</h2>
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item rank-1">
+                            <div class="rank">1</div>
+                            <div class="player-info">
+                                <div class="player-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="player-details">
+                                    <div class="player-name">Sarah Johnson</div>
+                                    <div class="player-level">Level 9</div>
+                                </div>
+                            </div>
+                            <div class="player-score">3,850 pts</div>
+                        </div>
+                        <div class="leaderboard-item rank-2">
+                            <div class="rank">2</div>
+                            <div class="player-info">
+                                <div class="player-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="player-details">
+                                    <div class="player-name">Mike Chen</div>
+                                    <div class="player-level">Level 8</div>
+                                </div>
+                            </div>
+                            <div class="player-score">3,200 pts</div>
+                        </div>
+                        <div class="leaderboard-item rank-3 current-user">
+                            <div class="rank">3</div>
+                            <div class="player-info">
+                                <div class="player-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="player-details">
+                                    <div class="player-name">You</div>
+                                    <div class="player-level">Level 7</div>
+                                </div>
+                            </div>
+                            <div class="player-score">2,450 pts</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">4</div>
+                            <div class="player-info">
+                                <div class="player-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="player-details">
+                                    <div class="player-name">Emma Davis</div>
+                                    <div class="player-level">Level 6</div>
+                                </div>
+                            </div>
+                            <div class="player-score">2,100 pts</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">5</div>
+                            <div class="player-info">
+                                <div class="player-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="player-details">
+                                    <div class="player-name">Alex Rodriguez</div>
+                                    <div class="player-level">Level 6</div>
+                                </div>
+                            </div>
+                            <div class="player-score">1,950 pts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="invite-section">
+                        <h3>Invite Friends</h3>
+                        <p>Challenge your contacts to join the budget hike!</p>
+                        <button class="invite-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Invite from Contacts</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Page -->
+            <div id="statistics-page" class="page">
+                <div class="statistics-container">
+                    <h2>Your Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card-large">
+                            <h3>Monthly Overview</h3>
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-pie"></i>
+                                <p>Spending by Category</p>
+                            </div>
+                        </div>
+                        <div class="stat-card-large">
+                            <h3>Progress Trends</h3>
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Points Over Time</p>
+                            </div>
+                        </div>
+                        <div class="stat-card-large">
+                            <h3>Achievements</h3>
+                            <div class="achievements-list">
+                                <div class="achievement">
+                                    <i class="fas fa-medal"></i>
+                                    <span>First Week Complete</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-fire"></i>
+                                    <span>10 Day Streak</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Level 5 Reached</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Page -->
+            <div id="login-page" class="page">
+                <div class="login-container">
+                    <div class="login-card">
+                        <div class="login-header">
+                            <h2>Connect Your Bank Account</h2>
+                            <p>Link your Apple Pay or Google Pay to track your real balance</p>
+                        </div>
+                        
+                        <div class="bank-options">
+                            <button class="bank-btn apple-pay" id="apple-pay-btn">
+                                <i class="fab fa-apple-pay"></i>
+                                <span>Connect Apple Pay</span>
+                                <small>Secure • Encrypted • Private</small>
+                            </button>
+                            
+                            <button class="bank-btn google-pay" id="google-pay-btn">
+                                <i class="fab fa-google-pay"></i>
+                                <span>Connect Google Pay</span>
+                                <small>Secure • Encrypted • Private</small>
+                            </button>
+                            
+                            <button class="bank-btn manual" id="manual-bank-btn">
+                                <i class="fas fa-university"></i>
+                                <span>Add Bank Manually</span>
+                                <small>Enter account details securely</small>
+                            </button>
+                        </div>
+                        
+                        <div class="connection-status" id="connection-status" style="display: none;">
+                            <div class="status-indicator">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Connected Successfully!</span>
+                            </div>
+                            <div class="bank-info">
+                                <div class="bank-name">Chase Bank</div>
+                                <div class="account-balance">Current Balance: $2,450.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="privacy-note">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Your financial data is encrypted and never shared. We use bank-level security.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page">
+                <div class="settings-container">
+                    <h2>Settings</h2>
+                    
+                    <div class="settings-grid">
+                        <!-- Account Management -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-user-cog"></i> Account Management</h3>
+                            <div class="account-settings">
+                                <div class="account-item">
+                                    <label>Email Address</label>
+                                    <input type="email" id="email-address" value="user@example.com" placeholder="your@email.com">
+                                </div>
+                                <div class="account-item">
+                                    <label>Change Password</label>
+                                    <button class="change-password-btn">Change Password</button>
+                                </div>
+                                <div class="account-item">
+                                    <label>Two-Factor Authentication</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="two-factor">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Spending Categories -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-list"></i> Spending Categories</h3>
+                            <div class="category-manager">
+                                <div class="existing-categories">
+                                    <h4>Current Categories</h4>
+                                    <div class="category-list" id="category-list">
+                                        <div class="category-item">
+                                            <span class="category-name">Housing</span>
+                                            <div class="category-actions">
+                                                <button class="edit-category"><i class="fas fa-edit"></i></button>
+                                                <button class="delete-category"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="category-item">
+                                            <span class="category-name">Food</span>
+                                            <div class="category-actions">
+                                                <button class="edit-category"><i class="fas fa-edit"></i></button>
+                                                <button class="delete-category"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="category-item">
+                                            <span class="category-name">Transportation</span>
+                                            <div class="category-actions">
+                                                <button class="edit-category"><i class="fas fa-edit"></i></button>
+                                                <button class="delete-category"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-category">
+                                    <input type="text" id="new-category" placeholder="Add new category">
+                                    <button id="add-category-btn"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Goals & Targets -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-target"></i> Financial Goals</h3>
+                            <div class="goals-settings">
+                                <div class="goal-item">
+                                    <label>Monthly Savings Goal</label>
+                                    <input type="number" id="savings-goal" value="1000" placeholder="0">
+                                </div>
+                                <div class="goal-item">
+                                    <label>Daily Spending Limit</label>
+                                    <input type="number" id="daily-limit" value="50" placeholder="0">
+                                </div>
+                                <div class="goal-item">
+                                    <label>Emergency Fund Target</label>
+                                    <input type="number" id="emergency-fund" value="5000" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-bell"></i> Notifications</h3>
+                            <div class="notification-settings">
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Daily spending reminders</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Budget alerts</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>Weekly progress reports</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Achievement notifications</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
+                            <div class="privacy-settings">
+                                <div class="privacy-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Share progress with friends</span>
+                                    </label>
+                                </div>
+                                <div class="privacy-item">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>Show balance in leaderboard</span>
+                                    </label>
+                                </div>
+                                <div class="privacy-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Allow data for app improvement</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Management -->
+                        <div class="settings-section">
+                            <h3><i class="fas fa-database"></i> Data Management</h3>
+                            <div class="data-settings">
+                                <div class="data-item">
+                                    <label>Export Data</label>
+                                    <button class="export-btn">Export to CSV</button>
+                                </div>
+                                <div class="data-item">
+                                    <label>Backup Settings</label>
+                                    <button class="backup-btn">Create Backup</button>
+                                </div>
+                                <div class="data-item">
+                                    <label>Clear All Data</label>
+                                    <button class="clear-data-btn danger">Clear All Data</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-settings">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            <span>Save All Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customize Page -->
+            <div id="customize-page" class="page">
+                <div class="customize-container">
+                    <h2>Customize Your Budget</h2>
+                    <p class="page-subtitle">Set your disposable income target and watch your savings grow!</p>
+                    
+                    <div class="customize-grid">
+                        <!-- Disposable Income Limit -->
+                        <div class="customize-section main-section">
+                            <h3><i class="fas fa-target"></i> Disposable Income Target</h3>
+                            <div class="income-target-container">
+                                <div class="target-input-section">
+                                    <label for="disposable-income-slider">Monthly Disposable Income</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="disposable-income-slider" min="0" max="2000" value="500" step="50">
+                                        <div class="slider-value">$<span id="disposable-income-value">500</span></div>
+                                    </div>
+                                    <div class="target-input">
+                                        <label for="disposable-income-input">Or enter amount:</label>
+                                        <div class="input-group">
+                                            <span class="currency-symbol">$</span>
+                                            <input type="number" id="disposable-income-input" value="500" min="0" max="2000" step="50">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="budget-visualization">
+                                    <h4>Budget Breakdown</h4>
+                                    <div class="budget-mountain">
+                                        <div class="mountain-horizon">
+                                            <div class="horizon-line" id="budget-horizon">
+                                                <span class="horizon-label">Total Budget: $<span id="total-budget">3000</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="disposable-income-bar" id="disposable-bar">
+                                            <div class="bar-fill" id="bar-fill"></div>
+                                            <div class="bar-label">Disposable Income</div>
+                                        </div>
+                                        <div class="remaining-budget" id="remaining-budget">
+                                            <div class="remaining-fill" id="remaining-fill"></div>
+                                            <div class="remaining-label">Remaining Budget</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="feedback-section">
+                                    <div class="feedback-indicator" id="feedback-indicator">
+                                        <div class="feedback-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="feedback-message">
+                                            <h4 id="feedback-title">Great Choice!</h4>
+                                            <p id="feedback-text">Your disposable income target is well within your budget.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Budget Goals -->
+                        <div class="customize-section">
+                            <h3><i class="fas fa-flag-checkered"></i> Savings Goals</h3>
+                            <div class="goals-container">
+                                <div class="goal-item">
+                                    <label>Emergency Fund Target</label>
+                                    <div class="goal-input">
+                                        <span class="currency-symbol">$</span>
+                                        <input type="number" id="emergency-fund-goal" value="5000" min="0" step="100">
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 30%"></div>
+                                        </div>
+                                        <span class="progress-text">$1,500 / $5,000</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="goal-item">
+                                    <label>Vacation Fund</label>
+                                    <div class="goal-input">
+                                        <span class="currency-symbol">$</span>
+                                        <input type="number" id="vacation-fund-goal" value="2000" min="0" step="100">
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 15%"></div>
+                                        </div>
+                                        <span class="progress-text">$300 / $2,000</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="goal-item">
+                                    <label>Investment Fund</label>
+                                    <div class="goal-input">
+                                        <span class="currency-symbol">$</span>
+                                        <input type="number" id="investment-fund-goal" value="10000" min="0" step="100">
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 5%"></div>
+                                        </div>
+                                        <span class="progress-text">$500 / $10,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme Customization -->
+                        <div class="customize-section">
+                            <h3><i class="fas fa-palette"></i> Theme & Style</h3>
+                            <div class="theme-options">
+                                <div class="theme-option active" data-theme="default">
+                                    <div class="theme-preview default-theme"></div>
+                                    <span>Savings Blue</span>
+                                </div>
+                                <div class="theme-option" data-theme="green">
+                                    <div class="theme-preview green-theme"></div>
+                                    <span>Money Green</span>
+                                </div>
+                                <div class="theme-option" data-theme="purple">
+                                    <div class="theme-preview purple-theme"></div>
+                                    <span>Royal Purple</span>
+                                </div>
+                                <div class="theme-option" data-theme="orange">
+                                    <div class="theme-preview orange-theme"></div>
+                                    <span>Sunset Orange</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Settings -->
+                        <div class="customize-section">
+                            <h3><i class="fas fa-user"></i> Profile</h3>
+                            <div class="profile-settings">
+                                <div class="profile-item">
+                                    <label>Display Name</label>
+                                    <input type="text" id="display-name" value="Smart Saver" placeholder="Your name">
+                                </div>
+                                <div class="profile-item">
+                                    <label>Avatar</label>
+                                    <div class="avatar-options">
+                                        <div class="avatar-option active">
+                                            <i class="fas fa-piggy-bank"></i>
+                                        </div>
+                                        <div class="avatar-option">
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                        <div class="avatar-option">
+                                            <i class="fas fa-gem"></i>
+                                        </div>
+                                        <div class="avatar-option">
+                                            <i class="fas fa-trophy"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="customize-section">
+                            <h3><i class="fas fa-bell"></i> Smart Notifications</h3>
+                            <div class="notification-settings">
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Budget alerts when approaching limit</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Weekly savings progress updates</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span>Daily spending reminders</span>
+                                    </label>
+                                </div>
+                                <div class="notification-item">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span>Goal achievement celebrations</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tips & Insights -->
+                        <div class="customize-section">
+                            <h3><i class="fas fa-lightbulb"></i> Smart Tips</h3>
+                            <div class="tips-container">
+                                <div class="tip-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="tip-content">
+                                        <h4>20-30-50 Rule</h4>
+                                        <p>Allocate 20% to savings, 30% to wants, and 50% to needs for optimal budgeting.</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <div class="tip-content">
+                                        <h4>Track Your Progress</h4>
+                                        <p>Monitor your disposable income spending weekly to stay on track.</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-piggy-bank"></i>
+                                    <div class="tip-content">
+                                        <h4>Automate Savings</h4>
+                                        <p>Set up automatic transfers to your savings goals for consistent progress.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-settings">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            <span>Save Budget Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#analytics">Analytics</a></li>
-                    <li><a href="#settings">Settings</a></li>
-                </ul>
-                <div class="profile-icon">👤</div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="mountain-container">
-                <div class="mountain"></div>
-                <div class="mountain-peak"></div>
-                <div class="mountain-snow"></div>
-                <div class="avatar-position">🏔️</div>
-            </div>
-            
-            <div class="level-info">
-                <h1 class="level-title">Level 5 - Base Camp</h1>
-                <p>You're climbing strong! Keep logging expenses to reach the next peak.</p>
-            </div>
-            
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
-                <div class="progress-text">65% to Peak 6</div>
-            </div>
-            
-            <button class="cta-button">📝 Log Expense</button>
-        </div>
-    </section>
-
-    <!-- Core Gamification -->
-    <section class="gamification-section">
-        <div class="container">
-            <div class="streak-badge">🔥 7 Days Logging Streak!</div>
-            
-            <a href="#transaction-log" class="transaction-log-link">
-                📊 The Spreadsheet - View Transaction Log
-            </a>
-        </div>
-    </section>
-
-    <!-- Why Pay Section -->
-    <section class="why-pay">
-        <div class="container">
-            <h2>🚀 Unlock Expert Climber Tools</h2>
-            <p>Premium gear for faster ascent to financial freedom!</p>
-            
-            <div class="premium-features">
-                <div class="feature-card">
-                    <h3>🎯 Advanced Analytics</h3>
-                    <p>Detailed insights into your spending patterns</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🏆 Exclusive Challenges</h3>
-                    <p>Special mountain peaks and achievement badges</p>
-                </div>
-                <div class="feature-card">
-                    <h3>👥 Team Climbing</h3>
-                    <p>Compete with friends and family members</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cash Flow Section -->
-    <section class="cash-flow-section">
-        <div class="container">
-            <h2>💰 Cash Flow Overview</h2>
-            <div class="cash-flow-chart">
-                <div class="income-bar" style="width: 80%;">Income: $4,200</div>
-                <div class="expense-bar" style="width: 60%;">Expenses: $2,800</div>
-                <p style="margin-top: 15px; font-weight: bold; color: #48bb78;">Monthly Surplus: $1,400</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social & Motivation -->
-    <section class="social-section">
-        <div class="container">
-            <div class="leaderboard">
-                <h3>🏔️ Mountain Climber Rankings</h3>
-                <div class="rank-display">Your Rank: #14 of 200 Climbers</div>
-                <p>You're in the top 7% of climbers! Keep pushing to reach the summit!</p>
-            </div>
-            
-            <div class="goal-status">
-                <h3>🎯 Current Goal</h3>
-                <p><strong>Saving for Everest Base Camp Trip</strong></p>
-                <div class="goal-progress">
-                    <div class="goal-progress-bar"></div>
-                </div>
-                <p>40% Complete - $2,400 of $6,000 saved</p>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Menu button click handler
-        function handleMenuClick(section) {
-            // Add visual feedback
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-            }, 150);
-            
-            // Show alert for demo purposes
-            alert(`${section} section would open here!`);
-            
-            // In a real application, you would navigate to the appropriate section
-            // or load the corresponding content dynamically
-        }
-
-        // Add some interactivity
-        document.querySelector('.cta-button').addEventListener('click', function() {
-            alert('Expense logging feature would open here!');
-        });
-
-        document.querySelector('.transaction-log-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Transaction log/spreadsheet view would open here!');
-        });
-
-        // Animate progress bars on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'shimmer 2s infinite';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.progress-bar, .goal-progress-bar').forEach(bar => {
-            observer.observe(bar);
-        });
-
-        // Add hover effects for menu buttons
-        document.querySelectorAll('.menu-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
-    </script>
+    <script src="script2.js"></script>
 </body>
 </html>
